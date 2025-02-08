@@ -19,36 +19,36 @@ https://github.com/sanikadhanwate/Luxury-Handbag-Sales-Analysis/blob/9e588f9ea16
 #### 1. Revenue Growth
 
     Revenue Growth % = VAR LastYearRevenue = CALCULATE(SUM(Sales[TotalRevenue]), SAMEPERIODLASTYEAR(Sales[SaleDate].[Date]))
-VAR currentyearrevenue = sum(Sales[TotalRevenue])
-RETURN IF(LastYearRevenue >0, (currentyearrevenue - LastYearRevenue) / LastYearRevenue*100, BLANK())
+    VAR currentyearrevenue = sum(Sales[TotalRevenue])
+    RETURN IF(LastYearRevenue >0, (currentyearrevenue - LastYearRevenue) / LastYearRevenue*100, BLANK())
 
 #### 2. What is Weekly Active Customers
    --> refers to the number of unique customers who interacted with a business or platform at least once within a given week/ 7 day window.
 
-WeeklyActiveCustomers = CALCULATE(DISTINCTCOUNT(Sales[BagID]),ALLEXCEPT(Sales,Sales[WeekStart]))
+    WeeklyActiveCustomers = CALCULATE(DISTINCTCOUNT(Sales[BagID]),ALLEXCEPT(Sales,Sales[WeekStart]))
 
-WeekStart = Sales[SaleDate] - WEEKDAY(Sales[SaleDate],2)+1
+    WeekStart = Sales[SaleDate] - WEEKDAY(Sales[SaleDate],2)+1
 
 
 #### 3. Profit Margin --> the percentage of revenue left after paying business expenses. 
 
-Profit Margin % = 
-VAR Revenue = SUM(Sales[TotalRevenue])
-VAR Cost = SUM(handbags[Price])
-VAR Profit = Revenue - Cost
-RETURN 
+    Profit Margin % = 
+    VAR Revenue = SUM(Sales[TotalRevenue])
+    VAR Cost = SUM(handbags[Price])
+    VAR Profit = Revenue - Cost
+    RETURN 
     IF(Revenue > 0, (Profit / Revenue) * 100, BLANK())
 
 #### What is Daily Active Customers
    -->  refers to a customer who engages with a company's product or service on a daily basis, meaning they actively use it within a 24-hour period...
 
-   DailyActiveCustomers = DISTINCTCOUNT(Sales[BagID])
-
-Daily Stickiness Ratio = DIVIDE([DailyActiveCustomers],[TotalCustomers],0) 
+     DailyActiveCustomers = DISTINCTCOUNT(Sales[BagID])
+ 
+    Daily Stickiness Ratio = DIVIDE([DailyActiveCustomers],[TotalCustomers],0) 
 
 
 #### 5. Total Profit
-Total Profit = SUM(Sales[TotalRevenue]) - SUM(handbags[Price])
+    Total Profit = SUM(Sales[TotalRevenue]) - SUM(handbags[Price])
 
 #### 6. Total Customers
-TotalCustomers = DISTINCTCOUNT(Customers[CustomerID])
+    TotalCustomers = DISTINCTCOUNT(Customers[CustomerID])
