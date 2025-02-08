@@ -166,7 +166,7 @@ INSERT INTO Customers (CustomerID, Name, Email, Country, PurchaseCount) VALUES
 (8, 'Emma Johnson', 'emma.johnson@example.com', 'Australia', 2),
 (9, 'Mohamed Ali', 'mohamed.ali@example.eg', 'Egypt', 4),
 (10, 'Sophia Williams', 'sophia.williams@example.ca', 'Canada', 5),
-(11, 'Lucas Müller', 'lucas.mueller@example.de', 'Germany', 3),
+(11, 'Lucas MÃ¼ller', 'lucas.mueller@example.de', 'Germany', 3),
 (12, 'Ava Brown', 'ava.brown@example.co.uk', 'UK', 7),
 (13, 'Hiroshi Sato', 'hiroshi.sato@example.jp', 'Japan', 2),
 (14, 'Liam Jones', 'liam.jones@example.au', 'Australia', 4),
@@ -267,7 +267,7 @@ SELECT
 FROM Sales s
 JOIN Handbags h ON s.BagID = h.BagID
 GROUP BY h.Model
-HAVING SUM(s.QuantitySold) < 6
+HAVING SUM(s.QuantitySold) < 10
 
 
 -- Customer Insights ---> 1. Top 10 customers by total purchase value
